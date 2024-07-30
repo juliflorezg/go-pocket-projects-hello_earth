@@ -11,15 +11,23 @@ func main() {
 // language represents the language’s code
 type language string
 
-func greet(l language) string {
+var phrasebook = map[language]string{
+	// two-letter codes for languages are standardized by ISO 639-1.
+	"el": "Χαίρετε Κόσμε",     // Greek
+	"en": "Hello world",       // English
+	"fr": "Bonjour le monde",  // French
+	"es": "Hola mundo",        // Spanish
+	"he": "עולם שלום",         // Hebrew
+	"ur": "ﺎﯿﻧد ﻮﻠﯿہ",         // Urdu
+	"vi": "Xin chào Thế Giới", // Vietnamese
+}
 
-	switch l {
-	case "en":
-		return "Hello world"
-	case "fr":
-		return "Bonjour le monde"
-	default:
-		return ""
+func greet(l language) string {
+	greeting, ok := phrasebook[l]
+
+	if !ok {
+		return fmt.Sprintf("Unsupported language: %q", l)
 	}
 
+	return greeting
 }
