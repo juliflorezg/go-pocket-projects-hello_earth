@@ -1,10 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
-	// fmt.Println("Hello world")
-	greeting := greet("en")
+
+	var lang string
+	flag.StringVar(&lang, "lang", "en", "Value for the greeting language, e.g. en, ru, fr, es ...")
+	flag.Parse()
+
+	greeting := greet(language(lang))
 	fmt.Println(greeting)
 }
 
