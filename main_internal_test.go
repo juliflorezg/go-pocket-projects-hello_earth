@@ -11,7 +11,7 @@ func ExampleMain() {
 // ? A: preparation phase
 // ? B: execution phase
 // ? C: decision phase
-func TestGreet_English(t *testing.T) {
+func TestGreet(t *testing.T) {
 
 	type testCase struct {
 		lang language
