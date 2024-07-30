@@ -15,8 +15,8 @@ var phrasebook = map[language]string{
 	// two-letter codes for languages are standardized by ISO 639-1.
 	"el": "Χαίρετε Κόσμε",     // Greek
 	"en": "Hello world",       // English
-	"fr": "Bonjour le monde",  // French
 	"es": "Hola mundo",        // Spanish
+	"fr": "Bonjour le monde",  // French
 	"he": "עולם שלום",         // Hebrew
 	"ur": "ﺎﯿﻧد ﻮﻠﯿہ",         // Urdu
 	"vi": "Xin chào Thế Giới", // Vietnamese

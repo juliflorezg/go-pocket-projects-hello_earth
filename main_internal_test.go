@@ -12,38 +12,63 @@ func ExampleMain() {
 // ? B: execution phase
 // ? C: decision phase
 func TestGreet_English(t *testing.T) {
-	lang := language("en") //? #A
-	want := "Hello world"  //? #A
 
-	got := greet(lang) //? #B
-
-	if got != want { //? #C
-		// mark this test as failed
-		t.Errorf("expected %s, got %s", want, got)
+	type testCase struct {
+		lang language
+		want string
 	}
-}
 
-func TestGreet_French(t *testing.T) {
-	lang := language("fr")     //? #A
-	want := "Bonjour le monde" //? #A
-
-	got := greet(lang) //? #B
-
-	if got != want { //? #C
-		// mark this test as failed
-		t.Errorf("expected %s, got %s", want, got)
+	var tests = map[string]testCase{ //? #A
+		"English": {
+			lang: "en",
+			want: "Hello world",
+		},
+		"French": {
+			lang: "fr",
+			want: "Bonjour le monde",
+		},
+		"Spanish": {
+			lang: "es",
+			want: "Hola mundo",
+		},
+		"Akkadian, not supported": {
+			lang: "akk",
+			want: `Unsupported language: "akk"`,
+		},
+		"Greek": {
+			lang: "el",
+			want: "Χαίρετε Κόσμε",
+		},
+		"Hebrew": {
+			lang: "he",
+			want: "עולם שלום",
+		},
+		"Urdu": {
+			lang: "ur",
+			want: "ﺎﯿﻧد ﻮﻠﯿہ",
+		},
+		"Vietnamese": {
+			lang: "vi",
+			want: "Xin chào Thế Giới",
+		},
+		"Empty": {
+			lang: "",
+			want: `Unsupported language: ""`,
+		},
 	}
-}
 
-func TestGreet_Akkadian(t *testing.T) {
-	// Akkadian is not implemented yet!
-	lang := language("akk") //? #A
-	want := ""              //? #A
+	for name, tc := range tests {
 
-	got := greet(lang) //? #B
+		// Range over all test cases
+		t.Run(name, func(t *testing.T) {
+			got := greet(tc.lang) //? #B
+			if got != tc.want {   //? #C
+				// mark this test as failed
+				t.Errorf("Expected %q, got %q", tc.want, got)
+			}
 
-	if got != want { //? #C
-		// mark this test as failed
-		t.Errorf("expected %s, got %s", want, got)
+		})
+
 	}
+
 }
