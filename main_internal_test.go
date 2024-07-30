@@ -35,8 +35,8 @@ func TestGreet_French(t *testing.T) {
 	}
 }
 
-// Akkadian is not implemented yet!
 func TestGreet_Akkadian(t *testing.T) {
+	// Akkadian is not implemented yet!
 	lang := language("akk") //? #A
 	want := ""              //? #A
 
